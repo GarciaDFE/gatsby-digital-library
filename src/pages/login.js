@@ -4,9 +4,9 @@ import SEO from "../components/seo"
 import Section from "../objects/Section"
 import Container from "../objects/Container"
 import { FirebaseContext } from "../components/Firebase"
-import { Form, Title } from "../objects/Form"
-import { Input } from "../objects/Input"
-import { Button } from "../objects/Button"
+import Form from "../objects/Form"
+import Input from "../objects/Input"
+import Button from "../objects/Button"
 
 
 const LoginPage = () => {
@@ -36,8 +36,9 @@ const LoginPage = () => {
       <SEO title="Login"/>
       <Section>
         <Container>
-          <Form onSubmit={handleSubmit}>
-            <Title>Login</Title>
+          <Form 
+            title="Login"
+            onSubmit={handleSubmit}>
             <Input
               value={formValues.email}
               name="email"

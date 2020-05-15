@@ -1,6 +1,7 @@
+import React from "react"
 import styled from "styled-components"
 
-export const Input = styled.input`
+const InputField = styled.input`
    display: block;
    width: 100%;
    font-family: ${props => props.theme.font.secondy};
@@ -20,3 +21,15 @@ export const Input = styled.input`
       color: rgba(0,0,0,0.5);
    }
 `
+
+const Input = ({ type, name, value, onChange, placeholder }) => (
+   <InputField 
+      type={type}
+      name={name}
+      value={value}
+      onChange={onChange} 
+      placeholder={placeholder}
+   />
+)
+
+export default Input

@@ -1,6 +1,7 @@
+import React from "react"
 import styled from "styled-components"
 
-export const Button = styled.button`
+const BtnAction = styled.button`
    width: 100%;
    font-family: ${props => props.theme.font.secondy};
    font-size: ${props => props.theme.size.medium};
@@ -17,3 +18,11 @@ export const Button = styled.button`
       opacity: 0.8;
    }
 `
+
+const Button = ({ type, children }) => {
+   return (
+      <BtnAction type={type}>{children}</BtnAction>
+   )
+}
+
+export default Button
