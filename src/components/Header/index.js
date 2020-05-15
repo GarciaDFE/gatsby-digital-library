@@ -12,7 +12,7 @@ import PageLink from "../../objects/PageLink"
 const Header = () => {
 
    const { firebase, user } = useContext(FirebaseContext)
-   console.log(firebase, user)
+   console.log("USER :", user)
 
    const handleLogoutClick = () => {
       firebase.logout().then(() => navigate("/login"))
@@ -24,7 +24,7 @@ const Header = () => {
             <Brand brandTitle="Minha Biblioteca Digital"/>
             {!!user && !!user.email && 
                <UserStatus>
-                  Hello, {user.email}
+                  Hello, {user.username || user.email}
                   <LogoutLink onClick={handleLogoutClick}>
                      Logout
                   </LogoutLink>
