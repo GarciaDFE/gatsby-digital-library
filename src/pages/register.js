@@ -14,7 +14,8 @@ const RegisterPage = () => {
    const [formValues, setFormValues] = useState({
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      username: ""
    })
    const { firebase } = useContext(FirebaseContext)
    const [ errorMessage, setErrorMessage ] = useState("")
@@ -32,6 +33,7 @@ const RegisterPage = () => {
       e.preventDefault()
       if (formValues.password === formValues.confirmPassword) {
          firebase.register({
+            username: formValues.username,
             email: formValues.email,
             password: formValues.password
          }).catch(error => {
@@ -50,6 +52,13 @@ const RegisterPage = () => {
                <Form 
                   title="Register"
                   onSubmit={handleSubmit}>
+                  <Input
+                     value={formValues.username}
+                     name="username"
+                     onChange={handleInputChange} 
+                     placeholder="username" 
+                     type="text"
+                  />
                   <Input
                      value={formValues.email}
                      name="email"
