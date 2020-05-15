@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 
 import SEO from "../components/seo"
 import Section from "../objects/Section"
 import Container from "../objects/Container"
+import { FirebaseContext } from "../components/Firebase"
 import Form from "../objects/Form"
 import Input from "../objects/Input"
 import Button from "../objects/Button"
@@ -14,6 +15,7 @@ const RegisterPage = () => {
       password: "",
       confirmPassword: ""
    })
+   const { firebase } = useContext(FirebaseContext)
 
    const handleInputChange = e => {
       e.persist()
@@ -25,11 +27,13 @@ const RegisterPage = () => {
 
    const handleSubmit = e => {
       e.preventDefault()
+      if (formValues.password === formValues.confirmPassword) {
+         firebase.register({
+            email: formValues.email,
+            password: formValues.password
+         })
+      }
       console.log(formValues)
-      // firebase.login({ 
-      //   email: formValues.email, 
-      //   password: formValues.password 
-      // })
    }
   
    return (
