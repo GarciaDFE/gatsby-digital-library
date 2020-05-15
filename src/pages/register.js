@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 import SEO from "../components/seo"
 import Section from "../objects/Section"
@@ -9,8 +9,23 @@ import Button from "../objects/Button"
 
 const RegisterPage = () => {
 
+   const [formValues, setFormValues] = useState({
+      email: "",
+      password: "",
+      confirmPassword: ""
+   })
+
+   const handleInputChange = e => {
+      e.persist()
+      setFormValues(currentValues => ({
+        ...currentValues,
+        [e.target.name]: e.target.value
+      }))
+    }  
+
    const handleSubmit = e => {
       e.preventDefault()
+      console.log(formValues)
       // firebase.login({ 
       //   email: formValues.email, 
       //   password: formValues.password 
@@ -26,26 +41,26 @@ const RegisterPage = () => {
                   title="Register"
                   onSubmit={handleSubmit}>
                   <Input
-                     // value={formValues.email}
+                     value={formValues.email}
                      name="email"
-                     // onChange={handleInputChange} 
+                     onChange={handleInputChange} 
                      placeholder="email" 
                      type="email"
                      required 
                   />
                   <Input 
-                     // value={formValues.password}
+                     value={formValues.password}
                      name="password"
-                     // onChange={handleInputChange}
+                     onChange={handleInputChange}
                      placeholder="password" 
                      type="password"
                      required
                      minLenght={3} 
                   />
                   <Input 
-                     // value={formValues.password}
-                     name="password"
-                     // onChange={handleInputChange}
+                     value={formValues.confirmPassword}
+                     name="confirmPassword"
+                     onChange={handleInputChange}
                      placeholder="confirm password" 
                      type="password"
                      required

@@ -14,14 +14,6 @@ const LoginPage = () => {
   const [ formValues, setFormValues ] = useState({ email:"", password:"" })
   const { firebase } = useContext(FirebaseContext)
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    firebase.login({ 
-      email: formValues.email, 
-      password: formValues.password 
-    })
-  }
-
   const handleInputChange = e => {
     e.persist()
     setFormValues(currentValues => ({
@@ -30,6 +22,13 @@ const LoginPage = () => {
     }))
   }
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    firebase.login({ 
+      email: formValues.email, 
+      password: formValues.password 
+    })
+  }
 
   return (
     <>
