@@ -2,8 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
-const Linklogin = styled(Link)`
-   font-size: 1.8rem; 
+const LinkTo = styled(Link)`
    color: #FFF;
    text-decoration: none;
    &:hover {
@@ -11,10 +10,10 @@ const Linklogin = styled(Link)`
    }
 `
 
-const LoginLink = ({ linkto, children }) => {
+const PageLink = ({ linkto, children }) => {
    return (
-      <Linklogin to={linkto}>{children}</Linklogin>
+      <LinkTo to={linkto}>{children}</LinkTo>
    )
 }
 
-export default LoginLink
+export default PageLink

@@ -8,7 +8,8 @@ const WrapForm = styled.form`
    padding: 30px;
    display: block;
    text-align: center;
-   background-color: aliceblue;
+   background-color: ${props => props.theme.color.secondyClear};
+   box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
 `
 
 const Title = styled.h2`

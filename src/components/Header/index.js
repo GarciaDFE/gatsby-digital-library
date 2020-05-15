@@ -7,7 +7,7 @@ import Container from "../../objects/Container"
 import Brand from "../../objects/Brand"
 import UserStatus from "../../objects/UserStatus"
 import LogoutLink from "../../objects/LogoutLink"
-import LoginLink from "../../objects/LoginLink"
+import PageLink from "../../objects/PageLink"
 
 const Header = () => {
 
@@ -32,9 +32,13 @@ const Header = () => {
             }
             {(!user || !user.email) &&
                <UserStatus>
-                  <LoginLink linkto="/login">Login</LoginLink>
+                  <div style={{ display: "flex" }}>
+                     <PageLink linkto="/login">Login</PageLink>
+                     <span style={{ margin: "0 10px" }}> | </span>
+                     <PageLink linkto="/register">Register</PageLink>
+                  </div>
                </UserStatus>
-            }
+         }
          </Container>            
       </WrapHeader>
    )
