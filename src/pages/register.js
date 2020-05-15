@@ -7,6 +7,7 @@ import { FirebaseContext } from "../components/Firebase"
 import Form from "../objects/Form"
 import Input from "../objects/Input"
 import Button from "../objects/Button"
+import Message from "../objects/Message"
 
 const RegisterPage = () => {
 
@@ -16,9 +17,11 @@ const RegisterPage = () => {
       confirmPassword: ""
    })
    const { firebase } = useContext(FirebaseContext)
+   const [ errorMessage, setErrorMessage ] = useState("")
 
    const handleInputChange = e => {
       e.persist()
+      setErrorMessage("")
       setFormValues(currentValues => ({
         ...currentValues,
         [e.target.name]: e.target.value
@@ -31,9 +34,12 @@ const RegisterPage = () => {
          firebase.register({
             email: formValues.email,
             password: formValues.password
+         }).catch(error => {
+            setErrorMessage(error.message)
          })
+      } else {
+         setErrorMessage("Password and Confirm Password fields must match")
       }
-      console.log(formValues)
    }
   
    return (
@@ -50,7 +56,6 @@ const RegisterPage = () => {
                      onChange={handleInputChange} 
                      placeholder="email" 
                      type="email"
-                     required 
                   />
                   <Input 
                      value={formValues.password}
@@ -58,8 +63,7 @@ const RegisterPage = () => {
                      onChange={handleInputChange}
                      placeholder="password" 
                      type="password"
-                     required
-                     minLenght={3} 
+                     minLenght={6} 
                   />
                   <Input 
                      value={formValues.confirmPassword}
@@ -67,9 +71,11 @@ const RegisterPage = () => {
                      onChange={handleInputChange}
                      placeholder="confirm password" 
                      type="password"
-                     required
-                     minLenght={3}
+                     minLenght={6}
                   />
+                  {!!errorMessage &&
+                     <Message>{errorMessage}</Message>
+                  }
                   <Button type="submit">Register</Button>
                </Form>
             </Container>

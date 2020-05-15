@@ -33,9 +33,9 @@ const Header = () => {
             {(!user || !user.email) &&
                <UserStatus>
                   <div style={{ display: "flex" }}>
-                     <PageLink linkto="/login">Login</PageLink>
+                     <PageLink topage="/login">Login</PageLink>
                      <span style={{ margin: "0 10px" }}> | </span>
-                     <PageLink linkto="/register">Register</PageLink>
+                     <PageLink topage="/register">Register</PageLink>
                   </div>
                </UserStatus>
          }

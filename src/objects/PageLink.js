@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
-const LinkTo = styled(Link)`
+const LinkToPage = styled(Link)`
    color: #FFF;
    text-decoration: none;
    &:hover {
@@ -10,9 +10,9 @@ const LinkTo = styled(Link)`
    }
 `
 
-const PageLink = ({ linkto, children }) => {
+const PageLink = ({ topage, children }) => {
    return (
-      <LinkTo to={linkto}>{children}</LinkTo>
+      <LinkToPage to={topage}>{children}</LinkToPage>
    )
 }
 
