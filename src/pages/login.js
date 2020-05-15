@@ -7,15 +7,18 @@ import { FirebaseContext } from "../components/Firebase"
 import Form from "../objects/Form"
 import Input from "../objects/Input"
 import Button from "../objects/Button"
+import Message from "../objects/Message"
 
 
 const LoginPage = () => {
 
   const [ formValues, setFormValues ] = useState({ email:"", password:"" })
   const { firebase } = useContext(FirebaseContext)
+  const [ errorMessage, setErrorMessage ] = useState("")
 
   const handleInputChange = e => {
     e.persist()
+    setErrorMessage("")
     setFormValues(currentValues => ({
       ...currentValues,
       [e.target.name]: e.target.value
@@ -27,6 +30,9 @@ const LoginPage = () => {
     firebase.login({ 
       email: formValues.email, 
       password: formValues.password 
+    }).catch(error => {
+      console.log(error)
+      setErrorMessage(error.message)
     })
   }
 
@@ -50,6 +56,9 @@ const LoginPage = () => {
               onChange={handleInputChange}
               placeholder="password" 
               type="password" />
+            {!!errorMessage &&
+              <Message>{errorMessage}</Message>
+            }
             <Button type="submit">Login</Button>
           </Form>
         </Container>

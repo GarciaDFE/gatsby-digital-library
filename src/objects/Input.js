@@ -22,14 +22,18 @@ const InputField = styled.input`
    }
 `
 
-const Input = ({ type, name, value, onChange, placeholder }) => (
-   <InputField 
-      type={type}
-      name={name}
-      value={value}
-      onChange={onChange} 
-      placeholder={placeholder}
-   />
-)
+const Input = ({ type, name, value, onChange, placeholder }) => {
+
+   return (
+      <InputField 
+         required
+         type={type}
+         name={name}
+         value={value}
+         onChange={onChange} 
+         placeholder={placeholder}
+      />
+   )
+}
 
 export default Input
